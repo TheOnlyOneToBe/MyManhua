@@ -1,0 +1,64 @@
+.modal-container {
+    padding: 20;
+    background-color: white;
+}
+
+.modal-header {
+    font-size: 24;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 20;
+}
+
+.modal-content {
+    padding: 0 10;
+}
+
+.input-field {
+    margin-bottom: 20;
+}
+
+.label {
+    font-size: 14;
+    color: #666;
+    margin-bottom: 5;
+}
+
+.input {
+    font-size: 16;
+    padding: 10;
+    border-width: 1;
+    border-color: #ddd;
+    border-radius: 5;
+    background-color: #f8f9fa;
+}
+
+.picker {
+    font-size: 16;
+    padding: 10;
+    background-color: #f8f9fa;
+    border-width: 1;
+    border-color: #ddd;
+    border-radius: 5;
+}
+
+.button-container {
+    margin-top: 20;
+    justify-content: space-between;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: white;
+    padding: 10 20;
+    border-radius: 5;
+    width: 45%;
+}
+
+.btn-secondary {
+    background-color: #95a5a6;
+    color: white;
+    padding: 10 20;
+    border-radius: 5;
+    width: 45%;
+}

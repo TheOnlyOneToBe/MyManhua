@@ -1,0 +1,61 @@
+<GridLayout rows="auto, auto, *" class="page">
+    <!-- Navigation -->
+    <FlexboxLayout row="0" class="nav">
+        <Label text="Manhuas" class="nav-item" (tap)="navigateToManhuas()"></Label>
+        <Label text="Films" class="nav-item active"></Label>
+        <Label text="Séries" class="nav-item" (tap)="navigateToSeries()"></Label>
+    </FlexboxLayout>
+
+    <!-- Bouton d'ajout -->
+    <Button text="+" class="btn-add" (tap)="showFilmModal()"></Button>
+
+    <!-- Filtres -->
+    <GridLayout row="1" columns="auto, auto, auto, auto, *" class="filters">
+        <Button text="Tous" col="0" class="filter-btn" [class.active]="currentFilter === 'all'" (tap)="setFilter('all')"></Button>
+        <Button text="À télécharger" col="1" class="filter-btn" [class.active]="currentFilter === 'to_download'" (tap)="setFilter('to_download')"></Button>
+        <Button text="Téléchargé" col="2" class="filter-btn" [class.active]="currentFilter === 'downloaded'" (tap)="setFilter('downloaded')"></Button>
+        <Button text="Lue" col="3" class="filter-btn" [class.active]="currentFilter === 'watching'" (tap)="setFilter('watching')"></Button>
+        <SearchBar col="4" 
+                  hint="Rechercher..." 
+                  [(ngModel)]="searchQuery" 
+                  (submit)="onSearch($event)"
+                  class="search">
+        </SearchBar>
+    </GridLayout>
+
+    <!-- Liste des films -->
+    <GridLayout row="2">
+        <ListView [items]="filteredFilms" class="list-group">
+            <ng-template let-film="item">
+                <GridLayout rows="auto" columns="auto, *, auto" class="list-group-item">
+                    <!-- Image -->
+                    <Image [src]="film.imageUrl" 
+                           col="0" 
+                           width="50" 
+                           height="70" 
+                           class="thumb">
+                    </Image>
+
+                    <!-- Informations -->
+                    <StackLayout col="1" class="film-info">
+                        <Label [text]="film.title" class="title"></Label>
+                        <Label [text]="getStatusLabel(film.status)" [class]="'status-badge status-' + film.status"></Label>
+                    </StackLayout>
+
+                    <!-- Actions -->
+                    <StackLayout col="2" orientation="horizontal" class="actions">
+                        <Label text="&#xf044;" class="icon-button edit fas" (tap)="showFilmModal(film)"></Label>
+                        <Label text="&#xf2ed;" class="icon-button delete fas" (tap)="deleteFilm(film)"></Label>
+                    </StackLayout>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+
+        <!-- Message si aucun film -->
+        <StackLayout *ngIf="filteredFilms.length === 0" class="empty-state">
+            <Label text="&#127909;" class="empty-icon"></Label>
+            <Label text="Aucun film trouvé" class="empty-text"></Label>
+            <Button text="Ajouter un film" class="btn-add-empty" (tap)="showFilmModal()"></Button>
+        </StackLayout>
+    </GridLayout>
+</GridLayout>

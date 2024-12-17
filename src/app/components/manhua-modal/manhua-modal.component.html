@@ -1,0 +1,87 @@
+<GridLayout rows="auto, *" class="modal-container">
+    <Label [text]="isEditing ? 'Modifier le Manhua' : 'Ajouter un Manhua'" class="modal-title" row="0"></Label>
+    
+    <ScrollView row="1">
+        <StackLayout class="modal-content">
+            <StackLayout class="input-group">
+                <Label text="Nom du Manhua" class="label"></Label>
+                <TextField [(ngModel)]="manhua.title" 
+                    hint="Nom du manhua"
+                    class="input">
+                </TextField>
+            </StackLayout>
+
+            <!-- <StackLayout class="input-group">
+                <Label text="URL de l'image" class="label"></Label>
+                <TextField [(ngModel)]="manhua.imageUrl" 
+                    hint="URL de l'image"
+                    class="input">
+                </TextField>
+            </StackLayout> -->
+
+            <StackLayout class="input-group">
+                <Label text="Image" class="label"></Label>
+                <GridLayout rows="auto" columns="*, auto" class="image-container">
+                    <Image [src]="manhua.imageUrl || '~/assets/default-manhua.png'" 
+                           col="0"
+                           class="preview-image">
+                    </Image>
+                    <Button text="Choisir une image" 
+                            col="1"
+                            class="btn-select-image" 
+                            (tap)="selectImage()">
+                    </Button>
+                </GridLayout>
+            </StackLayout>
+
+            <StackLayout class="input-group">
+                <Label text="Nombre total de chapitres" class="label"></Label>
+                <TextField [(ngModel)]="manhua.totalChapters" 
+                    hint="Nombre total de chapitres"
+                    keyboardType="number"
+                    class="input">
+                </TextField>
+            </StackLayout>
+
+            <StackLayout class="input-group">
+                <Label text="Dernier chapitre lu" class="label"></Label>
+                <TextField [(ngModel)]="manhua.lastReadChapter" 
+                    hint="Dernier chapitre lu"
+                    keyboardType="number"
+                    class="input">
+                </TextField>
+            </StackLayout>
+
+            <StackLayout class="input-group">
+                <Label text="URL de la source" class="label"></Label>
+                <TextField [(ngModel)]="manhua.sourceUrl" 
+                    hint="URL de la source"
+                    class="input">
+                </TextField>
+            </StackLayout>
+
+            <StackLayout class="input-group">
+                <Label text="Statut" class="label"></Label>
+                <ListPicker 
+                    [items]="statusItems"
+                    [selectedIndex]="getSelectedIndex()"
+                    (selectedIndexChange)="onStatusChange($event)"
+                    class="picker">
+                </ListPicker>
+            </StackLayout>
+
+            <GridLayout columns="*, *" class="button-container">
+                <Button text="Annuler" 
+                    col="0"
+                    class="btn-secondary" 
+                    (tap)="onCancel()">
+                </Button>
+                <Button text="Enregistrer" 
+                    col="1"
+                    class="btn-primary" 
+                    (tap)="onSave()">
+                </Button>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</GridLayout>

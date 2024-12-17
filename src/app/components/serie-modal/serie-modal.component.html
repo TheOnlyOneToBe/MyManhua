@@ -1,0 +1,41 @@
+<StackLayout class="modal-container">
+    <Label [text]="serieData.id ? 'Modifier la série' : 'Ajouter une série'" class="modal-title"></Label>
+    
+    <GridLayout rows="auto, auto, auto, auto, auto" columns="*" class="form">
+        <!-- Titre -->
+        <StackLayout row="0" class="input-field">
+            <Label text="Titre" class="label"></Label>
+            <TextField [(ngModel)]="serieData.title" hint="Titre de la série" class="input"></TextField>
+        </StackLayout>
+
+        <!-- Image URL -->
+        <StackLayout row="1" class="input-field">
+            <Label text="URL de l'image" class="label"></Label>
+            <TextField [(ngModel)]="serieData.imageUrl" hint="URL de l'image" class="input"></TextField>
+        </StackLayout>
+
+        <!-- Nombre total de saisons -->
+        <StackLayout row="2" class="input-field">
+            <Label text="Nombre total de saisons" class="label"></Label>
+            <TextField [(ngModel)]="serieData.totalSeasons" keyboardType="number" class="input"></TextField>
+        </StackLayout>
+
+        <!-- Saison actuelle -->
+        <StackLayout row="3" class="input-field">
+            <Label text="Saison actuelle" class="label"></Label>
+            <TextField [(ngModel)]="serieData.currentSeason" keyboardType="number" class="input"></TextField>
+        </StackLayout>
+
+        <!-- Statut -->
+        <StackLayout row="4" class="input-field">
+            <Label text="Statut" class="label"></Label>
+            <ListPicker [items]="statusOptions" [(ngModel)]="selectedStatus" class="picker"></ListPicker>
+        </StackLayout>
+
+        <!-- Boutons -->
+        <GridLayout row="5" columns="*, *" class="buttons">
+            <Button text="Annuler" col="0" class="btn-cancel" (tap)="close()"></Button>
+            <Button text="Enregistrer" col="1" class="btn-save" (tap)="save()"></Button>
+        </GridLayout>
+    </GridLayout>
+</StackLayout>

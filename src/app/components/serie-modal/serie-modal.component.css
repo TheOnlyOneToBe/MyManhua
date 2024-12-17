@@ -1,0 +1,60 @@
+.modal-container {
+    padding: 20;
+    background-color: white;
+}
+
+.modal-title {
+    font-size: 24;
+    font-weight: bold;
+    margin-bottom: 20;
+    text-align: center;
+}
+
+.form {
+    margin-top: 20;
+}
+
+.input-field {
+    margin-bottom: 15;
+}
+
+.label {
+    font-size: 16;
+    margin-bottom: 5;
+    color: #333;
+}
+
+.input {
+    font-size: 16;
+    padding: 10;
+    border-width: 1;
+    border-color: #ccc;
+    border-radius: 4;
+}
+
+.picker {
+    font-size: 16;
+    padding: 10;
+}
+
+.buttons {
+    margin-top: 20;
+}
+
+.btn-cancel {
+    background-color: #e74c3c;
+    color: white;
+    font-size: 16;
+    padding: 10;
+    margin: 5;
+    border-radius: 4;
+}
+
+.btn-save {
+    background-color: #2ecc71;
+    color: white;
+    font-size: 16;
+    padding: 10;
+    margin: 5;
+    border-radius: 4;
+}

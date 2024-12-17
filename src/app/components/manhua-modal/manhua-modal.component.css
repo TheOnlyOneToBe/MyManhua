@@ -1,0 +1,79 @@
+.modal-container {
+    padding: 20;
+    background-color: white;
+}
+
+.modal-title {
+    font-size: 24;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20;
+}
+
+.modal-content {
+    padding: 0 10;
+}
+
+.input-group {
+    margin-bottom: 15;
+}
+
+.label {
+    font-size: 14;
+    color: #666;
+    margin-bottom: 5;
+}
+
+.input {
+    font-size: 16;
+    padding: 10;
+    border-width: 1;
+    border-color: #e1e1e1;
+    border-radius: 5;
+}
+
+.image-container {
+    margin-top: 10;
+    margin-bottom: 10;
+}
+
+.preview-image {
+    width: 100;
+    height: 140;
+    border-radius: 5;
+    stretch: aspectFill;
+}
+
+.btn-select-image {
+    background-color: #3498db;
+    color: white;
+    padding: 10;
+    border-radius: 5;
+    margin-left: 10;
+    font-size: 14;
+}
+
+.status-picker {
+    margin-top: 5;
+}
+
+.button-container {
+    margin-top: 20;
+}
+
+.btn {
+    padding: 15;
+    border-radius: 5;
+    font-size: 16;
+}
+
+.btn-save {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #e74c3c;
+    color: white;
+    margin-top: 10;
+}

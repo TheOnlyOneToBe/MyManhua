@@ -1,0 +1,29 @@
+<ScrollView>
+    <StackLayout class="page">
+        <!-- En-tête avec bouton d'ajout -->
+        <GridLayout columns="*, auto" class="header">
+            <Label text="Mes Manhuas" class="title" col="0"></Label>
+            <Button text="+" (tap)="showManhuaModal()" class="btn-add" col="1"></Button>
+        </GridLayout>
+
+        <!-- Liste des manhuas -->
+        <ListView [items]="manhuas" class="list-group">
+            <ng-template let-manhua="item">
+                <GridLayout rows="auto, auto" columns="*, auto" class="list-group-item">
+                    <StackLayout row="0" col="0" (tap)="showManhuaModal(manhua)">
+                        <Label [text]="manhua.title" class="h2"></Label>
+                        <Label [text]="'Chapitres: ' + manhua.lastReadChapter + '/' + manhua.totalChapters" class="body"></Label>
+                        <Label [text]="'Status: ' + manhua.status" class="body"></Label>
+                        <Label [text]="manhua.readingUrl" class="url"></Label>
+                    </StackLayout>
+                    <Button text="🗑️" 
+                        (tap)="deleteManhua(manhua.id)" 
+                        row="0" 
+                        col="1" 
+                        class="btn-delete">
+                    </Button>
+                </GridLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
+</ScrollView>

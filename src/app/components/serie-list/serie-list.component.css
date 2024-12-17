@@ -1,0 +1,146 @@
+.page {
+    background-color: #f8f9fa;
+}
+
+.nav {
+    padding: 16;
+    background-color: white;
+    border-bottom-width: 1;
+    border-bottom-color: #e9ecef;
+}
+
+.nav-item {
+    font-size: 16;
+    color: #6c757d;
+    margin-right: 24;
+}
+
+.nav-item.active {
+    color: #007bff;
+    font-weight: bold;
+}
+
+.btn-add {
+    width: 40;
+    height: 40;
+    font-size: 20;
+    color: white;
+    background-color: #007bff;
+    border-radius: 20;
+    margin: 8;
+    horizontal-align: right;
+    vertical-align: center;
+}
+
+.filters {
+    padding: 8 16;
+    background-color: white;
+    margin-bottom: 1;
+}
+
+.filter-btn {
+    font-size: 14;
+    color: #6c757d;
+    background-color: transparent;
+    border-width: 1;
+    border-color: #dee2e6;
+    border-radius: 4;
+    margin-right: 8;
+    padding: 8 16;
+}
+
+.filter-btn.active {
+    color: white;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.search {
+    background-color: #f8f9fa;
+    border-radius: 4;
+}
+
+.list-group-item {
+    background-color: white;
+    padding: 16;
+    margin-bottom: 1;
+}
+
+.thumb {
+    border-radius: 4;
+    margin-right: 16;
+}
+
+.serie-info {
+    margin-right: 16;
+}
+
+.title {
+    font-size: 16;
+    font-weight: bold;
+    color: #212529;
+    margin-bottom: 4;
+}
+
+.season {
+    font-size: 14;
+    color: #6c757d;
+    margin-bottom: 4;
+}
+
+.status-badge {
+    font-size: 12;
+    color: white;
+    padding: 2 8;
+    border-radius: 12;
+    width: auto;
+}
+
+.status-in-progress {
+    background-color: #ffc107;
+}
+
+.status-completed {
+    background-color: #28a745;
+}
+
+.icon-button {
+    font-size: 18;
+    padding: 8;
+    margin: 4;
+}
+
+.icon-button.edit {
+    color: #007bff;
+}
+
+.icon-button.delete {
+    color: #dc3545;
+}
+
+.empty-state {
+    padding: 32;
+    text-align: center;
+}
+
+.empty-icon {
+    font-size: 48;
+    color: #adb5bd;
+    margin-bottom: 16;
+}
+
+.empty-text {
+    font-size: 16;
+    color: #6c757d;
+    margin-bottom: 16;
+}
+
+.add-serie-btn {
+    font-size: 14;
+    color: white;
+    background-color: #007bff;
+    border-radius: 4;
+    padding: 8 16;
+    width: auto;
+    margin: 0 32;
+}

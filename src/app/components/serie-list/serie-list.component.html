@@ -1,0 +1,53 @@
+<GridLayout rows="auto, auto, *" class="page">
+    <!-- Navigation -->
+    <FlexboxLayout row="0" class="nav">
+        <Label text="Manhuas" class="nav-item" (tap)="navigateToManhuas()"></Label>
+        <Label text="Films" class="nav-item" (tap)="navigateToFilms()"></Label>
+        <Label text="Séries" class="nav-item active"></Label>
+    </FlexboxLayout>
+
+    <!-- Bouton d'ajout -->
+    <Button row="0" text="+" class="btn-add" (tap)="showSerieModal()"></Button>
+
+    <!-- Filtres -->
+    <GridLayout row="1" columns="auto, auto, *, auto" class="filters">
+        <Button text="Tous" col="0" class="filter-btn" [class.active]="currentFilter === 'all'" (tap)="setFilter('all')"></Button>
+        <Button text="En cours" col="1" class="filter-btn" [class.active]="currentFilter === 'in_progress'" (tap)="setFilter('in_progress')"></Button>
+        <Button text="Terminé" col="2" class="filter-btn" [class.active]="currentFilter === 'completed'" (tap)="setFilter('completed')"></Button>
+        <SearchBar col="3" 
+                  hint="Rechercher..." 
+                  [(ngModel)]="searchQuery" 
+                  (submit)="onSearch($event)"
+                  class="search">
+        </SearchBar>
+    </GridLayout>
+
+    <!-- Liste des séries -->
+    <ListView row="2" [items]="filteredSeries" class="list-group">
+        <ng-template let-serie="item">
+            <GridLayout columns="auto, *, auto" rows="auto" class="list-group-item">
+                <!-- Image -->
+                <Image col="0" [src]="serie.imageUrl || '~/assets/default-serie.png'" class="thumb" width="50" height="70"></Image>
+
+                <!-- Informations -->
+                <StackLayout col="1" class="serie-info">
+                    <Label [text]="serie.title" class="title"></Label>
+                    <Label [text]="'Saison ' + serie.currentSeason + '/' + serie.totalSeasons" class="season"></Label>
+                    <Label [text]="getStatusLabel(serie.status)" [class]="'status-badge status-' + getStatusClass(serie.status)"></Label>
+                </StackLayout>
+
+                <!-- Actions -->
+                <StackLayout col="2" class="actions">
+                    <Label text="&#xf044;" class="icon-button edit fas" (tap)="showSerieModal(serie)"></Label>
+                    <Label text="&#xf2ed;" class="icon-button delete fas" (tap)="confirmDelete(serie)"></Label>
+                </StackLayout>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+
+    <!-- Message si aucune série -->
+    <StackLayout *ngIf="filteredSeries.length === 0" row="2" class="empty-state">
+        <Label text="&#128250;" class="empty-icon"></Label>
+        <Label text="Aucune série trouvée" class="empty-text"></Label>
+    </StackLayout>
+</GridLayout>

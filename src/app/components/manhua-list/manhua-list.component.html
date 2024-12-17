@@ -1,0 +1,62 @@
+<GridLayout rows="auto, auto, *" class="page">
+    <GridLayout row="0" columns="*, auto" class="header">
+        <!-- Navigation -->
+        <FlexboxLayout col="0" class="nav">
+            <Label text="Manhuas" class="nav-item active"></Label>
+            <Label text="Films" class="nav-item" (tap)="navigateToFilms()"></Label>
+            <Label text="Séries" class="nav-item" (tap)="navigateToSeries()"></Label>
+        </FlexboxLayout>
+
+        <!-- Bouton d'ajout -->
+        <Button col="1" text="+" class="btn-add" (tap)="showManhuaModal()"></Button>
+    </GridLayout>
+
+    <!-- Filtres et recherche -->
+    <GridLayout row="1" columns="*, auto" class="filters">
+        <ScrollView orientation="horizontal" col="0">
+            <StackLayout orientation="horizontal">
+                <Button text="Tous" class="filter-btn" [class.active]="currentFilter === 'all'" (tap)="setFilter('all')"></Button>
+                <Button text="En cours" class="filter-btn" [class.active]="currentFilter === 'in_progress'" (tap)="setFilter('in_progress')"></Button>
+                <Button text="En pause" class="filter-btn" [class.active]="currentFilter === 'paused'" (tap)="setFilter('paused')"></Button>
+                <Button text="Annulé" class="filter-btn" [class.active]="currentFilter === 'cancelled'" (tap)="setFilter('cancelled')"></Button>
+                <Button text="Terminé" class="filter-btn" [class.active]="currentFilter === 'completed'" (tap)="setFilter('completed')"></Button>
+            </StackLayout>
+        </ScrollView>
+        <SearchBar col="1" 
+                  hint="Rechercher..." 
+                  [(ngModel)]="searchQuery" 
+                  (textChange)="onSearch($event)"
+                  class="search">
+        </SearchBar>
+    </GridLayout>
+
+    <!-- Liste des manhuas -->
+    <ListView row="2" [items]="filteredManhuas" class="list-group">
+        <ng-template let-manhua="item">
+            <GridLayout columns="auto, *, auto" rows="auto" class="list-group-item">
+                <!-- Image -->
+                <Image col="0" [src]="manhua.imageUrl || '~/assets/default-manhua.png'" class="thumb" width="50" height="70"></Image>
+
+                <!-- Informations -->
+                <StackLayout col="1" class="manhua-info">
+                    <Label [text]="manhua.title" class="title"></Label>
+                    <Label [text]="'Chapitre ' + manhua.lastReadChapter + '/' + manhua.totalChapters" class="chapter"></Label>
+                    <Label [text]="getStatusLabel(manhua.status)" [class]="'status-badge status-' + manhua.status"></Label>
+                </StackLayout>
+
+                <!-- Actions -->
+                <StackLayout col="2" orientation="horizontal" class="actions">
+                    <Label text="&#xf044;" class="icon-button edit fas" (tap)="showManhuaModal(manhua)"></Label>
+                    <Label text="&#xf2ed;" class="icon-button delete fas" (tap)="confirmDelete(manhua)"></Label>
+                </StackLayout>
+            </GridLayout>
+        </ng-template>
+    </ListView>
+
+    <!-- Message si aucun manhua -->
+    <StackLayout *ngIf="filteredManhuas.length === 0" row="2" class="empty-state">
+        <Label text="&#128218;" class="empty-icon"></Label>
+        <Label text="Aucun manhua trouvé" class="empty-text"></Label>
+        <Button text="Ajouter un manhua" class="btn-add-empty" (tap)="showManhuaModal()"></Button>
+    </StackLayout>
+</GridLayout>

@@ -1,0 +1,29 @@
+<StackLayout class="modal-container">
+    <Label [text]="filmData.id ? 'Modifier le film' : 'Ajouter un film'" class="modal-title"></Label>
+    
+    <GridLayout rows="auto, auto, auto, auto" columns="*" class="form">
+        <!-- Titre -->
+        <StackLayout row="0" class="input-field">
+            <Label text="Titre" class="label"></Label>
+            <TextField [(ngModel)]="filmData.title" hint="Titre du film" class="input"></TextField>
+        </StackLayout>
+
+        <!-- Image URL -->
+        <StackLayout row="1" class="input-field">
+            <Label text="URL de l'image" class="label"></Label>
+            <TextField [(ngModel)]="filmData.imageUrl" hint="URL de l'image" class="input"></TextField>
+        </StackLayout>
+
+        <!-- Statut -->
+        <StackLayout row="2" class="input-field">
+            <Label text="Statut" class="label"></Label>
+            <ListPicker [items]="statusOptions" [(ngModel)]="selectedStatus" class="picker"></ListPicker>
+        </StackLayout>
+
+        <!-- Boutons -->
+        <GridLayout row="3" columns="*, *" class="buttons">
+            <Button text="Annuler" col="0" class="btn-cancel" (tap)="close()"></Button>
+            <Button text="Enregistrer" col="1" class="btn-save" (tap)="save()"></Button>
+        </GridLayout>
+    </GridLayout>
+</StackLayout>
